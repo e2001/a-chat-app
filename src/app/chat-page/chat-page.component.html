@@ -1,0 +1,25 @@
+<div *ngIf="!isConnected" class="chat-disconnected">
+  <disconnected-message (leaveRoomClicked)="leaveRoom()"></disconnected-message>
+</div>
+
+<div class="chat-sidebar-container">
+  <chat-sidebar [users]="users$|async"
+                [roomUserName]="roomUserName"
+                [roomName]="roomName"
+                (leaveRoomClicked)="leaveRoom()"></chat-sidebar>
+</div>
+
+<div class="chat-messages-container">
+
+  <div id="messages" class="chat-messages-inner">
+    <chat-messages
+      [newMessage]="newMessage$|async"
+      [buckets]="buckets$|async"></chat-messages>
+  </div>
+
+  <div class="chat-footer-container">
+    <chat-footer (createMessage)="createMessage($event)"></chat-footer>
+  </div>
+
+</div>
+

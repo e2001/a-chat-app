@@ -1,0 +1,22 @@
+
+<div class="top-action-bar">
+  <button class="btn-remove btn btn-outline-primary btn-sm" (click)="removeAllMessages()">Remove All</button>
+</div>
+
+<div class="bucket-container" #bucketContainer>
+  <div class="bucket" *ngFor="let bucket of buckets">
+
+    <div [id]="message.id" class="message" *ngFor="let message of bucket.messages">
+      <div class="message-header">
+        <span><i class="fa fa-user-o" aria-hidden="true"></i>{{message.from}}</span>
+      </div>
+      <div class="message-body">
+        <span>{{message.text}}</span>
+      </div>
+      <div class="message-footer">
+        <span>{{message.createdAt | date :'short' }}</span>
+      </div>
+
+    </div>
+  </div>
+</div>

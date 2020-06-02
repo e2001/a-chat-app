@@ -1,0 +1,42 @@
+
+<div class="card mt-5" style="margin:auto;width: 600px;">
+
+  <div class="card-body">
+    <h5 class="card-title">Join Chat Room</h5>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6 offset-md-3">
+          <form [formGroup]="joinRoomForm" (ngSubmit)="tryJoinRoom()">
+            <div class="form-group">
+              <i class="fa fa-user-o" aria-hidden="true"></i>
+              <label>Chat Name</label>
+              <input type="text" formControlName="chatName" class="form-control"
+                     [ngClass]="{ 'is-invalid': submitted && f.chatName.errors }"/>
+              <div *ngIf="submitted && f.chatName.errors" class="invalid-feedback">
+                <div *ngIf="f.chatName.errors.required">First Name is required</div>
+              </div>
+            </div>
+            <div class="form-group">
+              <label>Room Name</label>
+              <input type="text" formControlName="roomName" class="form-control"
+                     [ngClass]="{ 'is-invalid': submitted && f.roomName.errors }"/>
+              <div *ngIf="submitted && f.roomName.errors" class="invalid-feedback">
+                <div *ngIf="f.roomName.errors.required">Last Name is required</div>
+              </div>
+            </div>
+            <div class="form-group">
+              <button
+                [disabled]="!isConnected"
+                class="btn btn-primary">
+
+                <span>Join Room</span>
+                <span *ngIf="!isConnected"> ...not connected</span>
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
